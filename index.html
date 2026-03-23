@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WHOOP — Strain vs Recovery</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #F4F3EF;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 16px 60px;
+      color: #1A1A18;
+    }
+    .page-header {
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 20px;
+    }
+    #datavis_header {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #aaa;
+    }
+    .page-date { font-size: 12px; color: #aaa; }
+    .summary-row {
+      width: 600px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .metric-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.08);
+      padding: 14px 16px;
+    }
+    .metric-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 6px;
+    }
+    .metric-value { font-size: 26px; font-weight: 300; line-height: 1; }
+    .metric-unit { font-size: 12px; color: #aaa; margin-top: 3px; }
+    .metric-badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 6px;
+    }
+    #chart {
+      background: #fff;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+  </style>
+</head>
+<body>
+  <div class="page-header">
+    <h1 id="datavis_header"></h1>
+    <span class="page-date" id="page-date"></span>
+  </div>
+  <div class="summary-row">
+    <div class="metric-card">
+      <div class="metric-label">Recovery score</div>
+      <div class="metric-value" id="card-recovery" style="color:#EF9F27">—</div>
+      <div class="metric-unit">/ 100 · last day</div>
+      <div class="metric-badge" id="card-badge">—</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Avg day strain</div>
+      <div class="metric-value" id="card-strain" style="color:#BA7517">—</div>
+      <div class="metric-unit">/ 21 · 7-day avg</div>
+    </div>
+    <div class="metric-card">
+      <div class="metric-label">Avg sleep</div>
+      <div class="metric-value" id="card-sleep" style="color:#534AB7">—</div>
+      <div class="metric-unit">hours · 7-day avg</div>
+    </div>
+  </div>
+  <svg id="chart"></svg>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
